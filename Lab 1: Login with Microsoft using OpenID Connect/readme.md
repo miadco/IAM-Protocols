@@ -441,6 +441,22 @@ After finishing this lab I can:
 
 ---
 
+## 📷 Screenshots
+
+| # | Screenshot | Description |
+|---|------------|-------------|
+| 1 | ![01-register-oidc-app](https://github.com/miadco/IAM-Protocols/blob/main/Lab%201%3A%20Login%20with%20Microsoft%20using%20OpenID%20Connect/screenshots/01-register-oidc-app.png) | App registration in Microsoft Entra ID for **IAM Protocols – Lab 1 OIDC**, showing single-tenant selection and the initial redirect URI `http://localhost:5000/auth/redirect`. |
+| 2 | ![02-configure-redirect-uri](https://github.com/miadco/IAM-Protocols/blob/main/Lab%201%3A%20Login%20with%20Microsoft%20using%20OpenID%20Connect/screenshots/02-configure-redirect-uri.png) | **Authentication → Redirect URI configuration** blade with the Web redirect URI pointing to the Flask app’s `/auth/redirect` endpoint. |
+| 3 | ![03-enable-id-tokens](https://github.com/miadco/IAM-Protocols/blob/main/Lab%201%3A%20Login%20with%20Microsoft%20using%20OpenID%20Connect/screenshots/03-enable-id-tokens.png) | **Authentication → Settings** tab with **ID tokens** enabled so the app can receive an ID token via the authorization code flow. |
+| 4 | ![04-create-client-secret](https://github.com/miadco/IAM-Protocols/blob/main/Lab%201%3A%20Login%20with%20Microsoft%20using%20OpenID%20Connect/screenshots/04-create-client-secret.png) | **Certificates & secrets** blade showing creation of a client secret (e.g., “Local Flask OIDC”) that the Flask app uses as its confidential credential. |
+| 5 | ![05-flask-oidc-code](https://github.com/miadco/IAM-Protocols/blob/main/Lab%201%3A%20Login%20with%20Microsoft%20using%20OpenID%20Connect/screenshots/05-flask-oidc-code.png) | Terminal view of the Flask app code, including `build_msal_app`, `build_auth_url`, and the `/login` and `/auth/redirect` routes wired to MSAL. |
+| 6 | ![06-local-login-page](https://github.com/miadco/IAM-Protocols/blob/main/Lab%201%3A%20Login%20with%20Microsoft%20using%20OpenID%20Connect/screenshots/06-local-login-page.png) | Local test app home page at `http://127.0.0.1:5000` with the **“Sign in with Microsoft”** button that starts the OIDC flow. |
+| 7 | ![07-microsoft-consent-screen](https://github.com/miadco/IAM-Protocols/blob/main/Lab%201%3A%20Login%20with%20Microsoft%20using%20OpenID%20Connect/screenshots/07-microsoft-consent-screen.png) | Microsoft sign-in and consent screen for **IAM Protocols – Lab 1 OIDC**, requesting permission to sign in and read the user profile. |
+| 8 | ![08-logged-in-with-microsoft](https://github.com/miadco/IAM-Protocols/blob/main/Lab%201%3A%20Login%20with%20Microsoft%20using%20OpenID%20Connect/screenshots/08-logged-in-with-microsoft.png) | Successful sign-in view from the Flask app showing **“Logged in with Microsoft”** and a JSON subset of ID token claims returned by Entra ID. |
+
+
+---
+
 ## 🧯 Errors & Troubleshooting
 
 ### 1. Virtual environment failed to create (`ensurepip is not available`)
