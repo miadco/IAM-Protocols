@@ -330,17 +330,17 @@ This lab pairs with Lab 1:
 
 ## 📷 Screenshots
 
-| # | Filename                              | Description                                                                                                             |
-| - | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| 1 | `01-create-client-secret.png`         | Certificates & secrets blade showing the **Add a client secret** dialog for the Lab 2 app registration.                 |
-| 2 | `02-request-api-permissions.png`      | Request API permissions pane for **Microsoft Graph**, selecting **Delegated permissions**.                              |
-| 3 | `03-api-permissions-user-read.png`    | API permissions blade with **Microsoft Graph → User.Read (Delegated)** configured for the app.                          |
-| 4 | `04-authentication-redirect-uris.png` | Authentication (Preview) blade listing web redirect URIs for the Lab 2 app registration.                                |
-| 5 | `05-edit-redirect-uri.png`            | Edit Redirect URI dialog where the URI is corrected to `http://localhost:5000/getAToken` / `http://127.0.0.1:5000/...`. |
-| 6 | `06-local-lab2-home.png`              | Local Lab 2 home page at `http://127.0.0.1:5000` showing “You are not signed in” and a link to sign in and call Graph.  |
-| 7 | `07-microsoft-consent-screen.png`     | Microsoft “Permissions requested” dialog for **IAM Fundamentals – Lab 2 (Flask Graph Me)** requesting `User.Read`.      |
-| 8 | `08-graph-me-result.png`              | Final `/graph_me` page showing **Display name**, **User principal name**, and **ID** returned from Microsoft Graph.     |
-
+| #  | Screenshot                                                                                                                                                                                                 | Description                                                                                                             |
+|----|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| 1  | ![01-create-client-secret](https://github.com/miadco/IAM-Protocols/blob/main/Lab%202%3A%20Call%20Microsoft%20Graph%20with%20OAuth%202.0%20Authorization%20Code%20Flow/screenshots/01-create-client-secret.png?raw=1)              | Certificates & secrets blade showing the “Add a client secret” dialog for the Lab 2 app registration.                  |
+| 2  | ![02-request-api-permissions](https://github.com/miadco/IAM-Protocols/blob/main/Lab%202%3A%20Call%20Microsoft%20Graph%20with%20OAuth%202.0%20Authorization%20Code%20Flow/screenshots/02-request-api-permissions.png?raw=1)       | Request API permissions pane for Microsoft Graph, selecting **Delegated permissions**.                                 |
+| 3  | ![03-api-permissions-user-read](https://github.com/miadco/IAM-Protocols/blob/main/Lab%202%3A%20Call%20Microsoft%20Graph%20with%20OAuth%202.0%20Authorization%20Code%20Flow/screenshots/03-api-permissions-user-read.png?raw=1)   | API permissions blade with **Microsoft Graph → User.Read (Delegated)** configured for the app.                         |
+| 4  | ![04-authentication-redirect-uris](https://github.com/miadco/IAM-Protocols/blob/main/Lab%202%3A%20Call%20Microsoft%20Graph%20with%20OAuth%202.0%20Authorization%20Code%20Flow/screenshots/04-authentication-redirect-uris.png?raw=1) | Authentication (Preview) blade listing web redirect URIs for the Lab 2 app registration.                               |
+| 5  | ![05-edit-redirect-uri](https://github.com/miadco/IAM-Protocols/blob/main/Lab%202%3A%20Call%20Microsoft%20Graph%20with%20OAuth%202.0%20Authorization%20Code%20Flow/screenshots/05-edit-redirect-uri.png?raw=1)                   | Edit Redirect URI dialog where the URI is corrected to `http://localhost:5000/getAToken` / `http://127.0.0.1:5000…`.   |
+| 6  | ![06-local-lab2-home](https://github.com/miadco/IAM-Protocols/blob/main/Lab%202%3A%20Call%20Microsoft%20Graph%20with%20OAuth%202.0%20Authorization%20Code%20Flow/screenshots/06-local-lab2-home.png?raw=1)                       | Local Lab 2 home page at `http://127.0.0.1:5000` showing “You are not signed in” and a link to sign in and call Graph. |
+| 7  | ![07-microsoft-consent-screen](https://github.com/miadco/IAM-Protocols/blob/main/Lab%202%3A%20Call%20Microsoft%20Graph%20with%20OAuth%202.0%20Authorization%20Code%20Flow/screenshots/07-microsoft-consent-screen.png?raw=1)     | Microsoft “Permissions requested” dialog for **IAM Fundamentals – Lab 2 (Flask Graph Me)** requesting `User.Read`.     |
+| 8  | ![08-graph-me-result](https://github.com/miadco/IAM-Protocols/blob/main/Lab%202%3A%20Call%20Microsoft%20Graph%20with%20OAuth%202.0%20Authorization%20Code%20Flow/screenshots/08-graph-me-result.png?raw=1)                       | Final `/graph_me` page showing Display name, User principal name, and ID returned from Microsoft Graph.                |
+             
 ---
 
 ## 🧯 Errors & Troubleshooting
@@ -349,25 +349,24 @@ This lab pairs with Lab 1:
 
 **What I saw**
 
-After clicking “Sign in and call Microsoft Graph,” Entra redirected to a page that said:
+After clicking “Sign in and call Microsoft Graph,” Entra redirected to an error page:
 
-> AADSTS50011: The redirect URI '[http://127.0.0.1:5000/getAToken](http://127.0.0.1:5000/getAToken)' specified in the request does not match the redirect URIs configured for the application...
+> AADSTS50011: The redirect URI `http://127.0.0.1:5000/getAToken` specified in the request does not match the redirect URIs configured for the application...
 
-Screenshot: `09-redirect-uri-mismatch-error.png`.
+Screenshot:  
+![Redirect URI mismatch error](https://github.com/miadco/IAM-Protocols/blob/main/Lab%202%3A%20Call%20Microsoft%20Graph%20with%20OAuth%202.0%20Authorization%20Code%20Flow/screenshots/09-redirect-uri-mismatch-error.png?raw=1)
 
 **Root cause**
 
-The redirect URI the app used (`http://127.0.0.1:5000/getAToken`) did not exactly match the redirect URI configured in the app registration (which initially used a different host/URI).
-
-Even tiny differences (localhost vs 127.0.0.1, trailing slashes, different paths) will cause this error.
+The redirect URI used by the app (`http://127.0.0.1:5000/getAToken`) did not exactly match the redirect URI configured in the app registration. Even small differences (localhost vs 127.0.0.1, missing path, trailing slash differences) will trigger this error.
 
 **What I did**
 
-1. Checked `config.py` and confirmed that:
+1. Confirmed in `config.py` that:
 
    ```python
    REDIRECT_PATH = "/getAToken"
-   ```
+
 
    so Flask was using `http://127.0.0.1:5000/getAToken` as the redirect URI.
 
