@@ -459,15 +459,18 @@ After finishing this lab I can:
 
 📷 Screenshots
 
-| # | Screenshot                                 | Description                                                                                       |
-| - | ------------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| 1 | `01-register-daemon-app.png`               | App registration blade showing the new Lab 3 daemon app.                                          |
-| 2 | `02-app-overview-ids.png`                  | Overview page with Application (client) ID and Directory (tenant) ID (redacted as needed).        |
-| 3 | `03-create-client-secret.png`              | Certificates & secrets blade after creating `lab3-daemon-secret` (secret value redacted).         |
-| 4 | `04-api-permissions-user-read-all.png`     | API permissions blade with `User.Read.All` (Application) configured and granted.                  |
-| 5 | `05-api-permissions-auditlog-read-all.png` | API permissions blade with `AuditLog.Read.All` (Application) configured and granted.              |
-| 6 | `06-daemon-users-output.png`               | Terminal showing `python3 app.py` successfully calling `/v1.0/users` (UPNs redacted).             |
-| 7 | `07-daemon-signins-output.png`             | Terminal showing `python3 app.py` successfully calling `/v1.0/auditLogs/signIns` (UPNs redacted). |
+| #  | Screenshot                                                                 | Description                                                                                                      |
+|----|----------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| 1  | ![01-app-overview-ids](https://github.com/miadco/IAM-Protocols/blob/main/Lab%203%3A%20Daemon%20App%20with%20OAuth%202.0%20Client%20Credentials%20(App-Only%20Access)/screenshots/01-app-overview-ids.png?raw=1) | App registration overview blade showing the Lab 3 daemon app with Application (client) ID and Directory ID.     |
+| 2  | ![02-create-client-secret](https://github.com/miadco/IAM-Protocols/blob/main/Lab%203%3A%20Daemon%20App%20with%20OAuth%202.0%20Client%20Credentials%20(App-Only%20Access)/screenshots/02-create-client-secret.png?raw=1) | Certificates & secrets blade with the “Add a client secret” dialog for `lab3-daemon-secret`.                    |
+| 3  | ![03-choose-application-permissions](https://github.com/miadco/IAM-Protocols/blob/main/Lab%203%3A%20Daemon%20App%20with%20OAuth%202.0%20Client%20Credentials%20(App-Only%20Access)/screenshots/03-choose-application-permissions.png?raw=1) | Request API permissions pane for Microsoft Graph highlighting **Application permissions** for daemons.          |
+| 4  | ![04-permission-details-user-read-all](https://github.com/miadco/IAM-Protocols/blob/main/Lab%203%3A%20Daemon%20App%20with%20OAuth%202.0%20Client%20Credentials%20(App-Only%20Access)/screenshots/04-permission-details-user-read-all.png?raw=1) | Permission details pane for `User.Read.All` showing it as an application permission that requires admin consent. |
+| 5  | ![05-grant-admin-consent](https://github.com/miadco/IAM-Protocols/blob/main/Lab%203%3A%20Daemon%20App%20with%20OAuth%202.0%20Client%20Credentials%20(App-Only%20Access)/screenshots/05-grant-admin-consent.png?raw=1) | Grant admin consent confirmation dialog for the Lab 3 daemon app.                                               |
+| 6  | ![06-403-authorization-requestdenied](https://github.com/miadco/IAM-Protocols/blob/main/Lab%203%3A%20Daemon%20App%20with%20OAuth%202.0%20Client%20Credentials%20(App-Only%20Access)/screenshots/06-403-authorization-requestdenied.png?raw=1) | Terminal output from `python3 app.py` showing the 403 `Authorization_RequestDenied` error from Microsoft Graph. |
+| 7  | ![07-api-permissions-granted](https://github.com/miadco/IAM-Protocols/blob/main/Lab%203%3A%20Daemon%20App%20with%20OAuth%202.0%20Client%20Credentials%20(App-Only%20Access)/screenshots/07-api-permissions-granted.png?raw=1) | API permissions blade showing `User.Read.All` application permission with status “Granted for Cumulus Labs”.    |
+| 8  | ![08-add-auditlog-read-all-permission](https://github.com/miadco/IAM-Protocols/blob/main/Lab%203%3A%20Daemon%20App%20with%20OAuth%202.0%20Client%20Credentials%20(App-Only%20Access)/screenshots/08-add-auditlog-read-all-permission.png?raw=1) | Request API permissions pane with `AuditLog.Read.All` selected before adding it to the app.                     |
+| 9  | ![09-daemon-app-code-snippet](https://github.com/miadco/IAM-Protocols/blob/main/Lab%203%3A%20Daemon%20App%20with%20OAuth%202.0%20Client%20Credentials%20(App-Only%20Access)/screenshots/09-daemon-app-code-snippet.png?raw=1) | Nano editor view of `app.py` showing environment variable loading and the client credentials flow code.         |
+
 
 ---
 
