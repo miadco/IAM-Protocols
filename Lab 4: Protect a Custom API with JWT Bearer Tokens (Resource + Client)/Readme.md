@@ -540,16 +540,15 @@ Expected:
 
 ## 📷 Screenshots
 
-| # | Screenshot filename               | Description                                                                    |
-| - | --------------------------------- | ------------------------------------------------------------------------------ |
-| 1 | 01-protected-api-overview         | App registration overview for Lab4-ProtectedApi showing client and tenant IDs. |
-| 2 | 02-expose-an-api-scope            | Expose an API blade with Application ID URI and Data.Read scope.               |
-| 3 | 03-data-read-scope-details        | Add a scope pane showing Data.Read display names and descriptions.             |
-| 4 | 04-client-app-api-permissions     | Client app API permissions blade with Data.Read delegated permission.          |
-| 5 | 05-grant-admin-consent-lab4       | Admin consent confirmation for the client app.                                 |
-| 6 | 06-terminal-access-token-acquired | Terminal showing device code flow and “Access token acquired.”                 |
-| 7 | 07-terminal-status-200-from-api   | Terminal showing Status: 200 and JSON response from `/data`.                   |
-| 8 | 08-curl-401-missing-authorization | Terminal curl output showing 401 with WWW-Authenticate header.                 |
+| # | Screenshot | Description |
+|---:|---|---|
+| 1 | ![01-protected-api-overview](https://github.com/miadco/IAM-Protocols/blob/main/Lab%204%3A%20Protect%20a%20Custom%20API%20with%20JWT%20Bearer%20Tokens%20(Resource%20%2B%20Client)/Screenshots/01-protected-api-overview.png) | App registration overview for **Lab4-ProtectedApi** showing Application (client) ID and Directory (tenant) ID. |
+| 2 | ![02-expose-an-api-scope](https://github.com/miadco/IAM-Protocols/blob/main/Lab%204%3A%20Protect%20a%20Custom%20API%20with%20JWT%20Bearer%20Tokens%20(Resource%20%2B%20Client)/Screenshots/02-expose-an-api-scope.png) | **Expose an API** blade showing the Application ID URI and the **Data.Read** scope being defined for the protected API. |
+| 3 | ![03-data-read-scope-details](https://github.com/miadco/IAM-Protocols/blob/main/Lab%204%3A%20Protect%20a%20Custom%20API%20with%20JWT%20Bearer%20Tokens%20(Resource%20%2B%20Client)/Screenshots/03-data-read-scope-details.png) | **Add a scope** pane showing the **Data.Read** consent display names/descriptions and scope state set to Enabled. |
+| 4 | ![04-client-app-api-permissions](https://github.com/miadco/IAM-Protocols/blob/main/Lab%204%3A%20Protect%20a%20Custom%20API%20with%20JWT%20Bearer%20Tokens%20(Resource%20%2B%20Client)/Screenshots/04-client-app-api-permissions.png) | Client app **API permissions** flow selecting **Delegated permissions** for the Lab4-ProtectedApi resource. |
+| 5 | ![05-grant-admin-consent-lab4](https://github.com/miadco/IAM-Protocols/blob/main/Lab%204%3A%20Protect%20a%20Custom%20API%20with%20JWT%20Bearer%20Tokens%20(Resource%20%2B%20Client)/Screenshots/05-grant-admin-consent-lab4.png) | Client app permissions page showing **Data.Read** with status **Granted** after consent was granted. |
+| 6 | ![06-terminal-access-token-acquired](https://github.com/miadco/IAM-Protocols/blob/main/Lab%204%3A%20Protect%20a%20Custom%20API%20with%20JWT%20Bearer%20Tokens%20(Resource%20%2B%20Client)/Screenshots/06-terminal-access-token-acquired.png) | Terminal output showing the client successfully acquiring an access token and calling the API endpoint. |
+| 7 | ![07-terminal-status-200-from-api](https://github.com/miadco/IAM-Protocols/blob/main/Lab%204%3A%20Protect%20a%20Custom%20API%20with%20JWT%20Bearer%20Tokens%20(Resource%20%2B%20Client)/Screenshots/07-terminal-status-200-from-api.png) | Terminal output confirming the protected API returned **Status: 200** for `/data` with a valid token and scope. |
 
 ---
 
